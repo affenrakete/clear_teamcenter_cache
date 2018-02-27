@@ -10,11 +10,17 @@ echo.
 echo Zudem werden die Prozesse java.exe und javaw.exe beendet.
 echo Speichere deine Daten bevor du weiter machst.
 echo.
-echo Weiter mit 1.
+echo 1 - Prozesse killen und Cache leeren.
+echo 2 - Prozesse killen.
 
 set /p u=Auswahl:
 
-IF %u% NEQ 1 GOTO :Ende
+IF %u% EQU 1 GOTO :Prozesse
+IF %u% EQU 2 GOTO :Prozesse
+
+GOTO :Ende
+
+:Prozesse
 
 echo.
 echo Prozesse killen
@@ -40,6 +46,9 @@ taskkill /IM visview_NG.exe /F >nul 2>&1
 
 echo.
 echo.
+
+IF %u% EQU 2 GOTO :Ende
+
 timeout /T 5
 echo.
 echo Cache leeren
