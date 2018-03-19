@@ -76,7 +76,7 @@ echo.
 echo.
 echo Cache leeren (Intensiv)
 echo.
-echo Achtung:  Einstellungen aus TC werden zurückgesetzt.
+echo Achtung:  Einstellungen aus TC werden auf Standard gesetzt.
 echo.
 echo.
 echo 1 - Weiter
@@ -95,26 +95,26 @@ GOTO :Ende
 echo.
 echo.
 echo Ordner: C:\Users\%username%\Siemens  
-rd C:\Users\%username%\Siemens                         /S /Q && md C:\Users\%username%\Siemens
+rd C:\Users\%username%\Siemens /S /Q && md C:\Users\%username%\Siemens
 echo.
 echo Ordner: C:\Users\%username%\FCCCache\%username%
-rd C:\Users\%username%\FCCCache\%username%             /S /Q && md C:\Users\%username%\FCCCache\%username%DE60Februar
+rd C:\Users\%username%\FCCCache\%username% /S /Q && md C:\Users\%username%\FCCCache\%username%DE60Februar
 echo.
 echo Ordner: C:\Users\%username%\Teamcenter
-rd C:\Users\%username%\Teamcenter                      /S /Q && md C:\Users\%username%\Teamcenter
+rd C:\Users\%username%\Teamcenter /S /Q && md C:\Users\%username%\Teamcenter
 echo.
 echo Ordner: C:\Users\%username%\AppData\Local\Temp\nx
-rd C:\Users\%username%\AppData\Local\Temp\nx           /S /Q && md C:\Users\%username%\AppData\Local\Temp\nx
+rd C:\Users\%username%\AppData\Local\Temp\nx /S /Q && md C:\Users\%username%\AppData\Local\Temp\nx
 echo.
 :: Ordner unten enthält RAC FCCC usw.
 echo Ordner: C:\Users\%username%\AppData\Roaming\Siemens
-rd C:\Users\%username%\AppData\Roaming\Siemens         /S /Q && md C:\Users\%username%\AppData\Roaming\Siemens
+rd C:\Users\%username%\AppData\Roaming\Siemens /S /Q && md C:\Users\%username%\AppData\Roaming\Siemens
 echo.
 echo Ordner: C:\Users\%username%\AppData\Roaming\teamcenter\sso
-rd C:\Users\%username%\AppData\Roaming\teamcenter\sso  /S /Q && md C:\Users\%username%\AppData\Roaming\teamcenter\sso
+rd C:\Users\%username%\AppData\Roaming\teamcenter\sso /S /Q && md C:\Users\%username%\AppData\Roaming\teamcenter\sso
 echo.
 echo Ordner: C:\ProgramData\plm\temp\nx
-rd C:\ProgramData\plm\temp\nx                          /S /Q && md C:\ProgramData\plm\temp\nx
+rd C:\ProgramData\plm\temp\nx /S /Q && md C:\ProgramData\plm\temp\nx
 
 echo.
 echo ... erledigt.
