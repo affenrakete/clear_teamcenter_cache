@@ -31,6 +31,7 @@ echo.
 echo Prozesse killen
 echo.
 
+:: Eine Reihe von Prozessen killen
 echo java.exe
 taskkill /IM java.exe /T /F >nul 2>&1
 
@@ -55,7 +56,7 @@ taskkill /IM visview_NG.exe /F >nul 2>&1
 echo.
 echo.
 
-:: Rest überspringen wenn 1 ausgewählt
+:: Rest überspringen wenn nur 1 ausgewählt
 IF %u% EQU 1 GOTO :Ende
 
 timeout /T 5
@@ -63,13 +64,14 @@ echo.
 echo Cache leeren (Normal)
 echo.
 
+:: Löschen vom TC Cache
 echo Ordner: %appdata%\Siemens\FCCCache
 rd /s /q %appdata%\Siemens\FCCCache
 
 echo.
 echo ... erledigt.
 
-:: Rest überspringen wenn 2 ausgewählt
+:: Rest überspringen wenn nur 2 ausgewählt
 IF %u% EQU 2 GOTO :Ende
 
 echo.
@@ -94,6 +96,7 @@ GOTO :Ende
 
 echo.
 echo.
+:: Löschen von allen TC und NX Ordnern mit Zwischenspeicher
 echo Ordner: C:\Users\%username%\Siemens  
 rd C:\Users\%username%\Siemens /S /Q && md C:\Users\%username%\Siemens
 echo.
