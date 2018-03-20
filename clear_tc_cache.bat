@@ -101,7 +101,7 @@ echo Ordner: C:\Users\%username%\Siemens
 rd C:\Users\%username%\Siemens /S /Q && md C:\Users\%username%\Siemens
 echo.
 echo Ordner: C:\Users\%username%\FCCCache\%username%
-rd C:\Users\%username%\FCCCache\%username% /S /Q && md C:\Users\%username%\FCCCache\%username%DE60Februar
+rd C:\Users\%username%\FCCCache\%username% /S /Q && md C:\Users\%username%\FCCCache\%username%
 echo.
 echo Ordner: C:\Users\%username%\Teamcenter
 rd C:\Users\%username%\Teamcenter /S /Q && md C:\Users\%username%\Teamcenter
