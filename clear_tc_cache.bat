@@ -15,8 +15,8 @@ echo.
 echo 1 - Prozesse killen.
 echo 2 - Prozesse killen und Cache leeren. (Normal)
 echo 3 - Prozesse killen und Cache leeren. (Intensiv)
-
-set /p u=Auswahl:
+echo.
+set /p u=Auswahl: 
 
 :: Rest überspringen wenn ungültig ausgewählt
 IF %u% EQU 1 GOTO :Prozesse
@@ -37,6 +37,9 @@ taskkill /IM java.exe /T /F >nul 2>&1
 
 echo javaw.exe
 taskkill /IM javaw.exe /T /F >nul 2>&1
+
+echo PLM_StartCenter.exe
+taskkill /IM PLM_StartCenter.exe /T /F >nul 2>&1
 
 echo ugraf.exe
 taskkill /IM ugraf.exe /F >nul 2>&1
@@ -59,6 +62,7 @@ echo.
 :: Rest überspringen wenn nur 1 ausgewählt
 IF %u% EQU 1 GOTO :Ende
 
+echo Warten um Prozesse sicher zu beenden...
 timeout /T 5
 echo.
 echo Cache leeren (Normal)
