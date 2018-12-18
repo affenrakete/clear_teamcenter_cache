@@ -1,4 +1,7 @@
 :: clear teamcenter cache
+:: 
+:: 
+::
 :: Copyright (C) 2018  Peter Siemer
 :: 
 :: This program is free software: you can redistribute it and/or modify
@@ -28,9 +31,10 @@ echo.
 echo Speichere deine Daten bevor du weiter machst.
 echo.
 echo.
-echo 1 - Prozesse killen.
-echo 2 - Prozesse killen und Cache leeren. (Normal)
-echo 3 - Prozesse killen und Cache leeren. (Intensiv)
+echo 1 - Teamcenter und Java killen.
+echo 2 - Alle Prozesse killen.
+echo 3 - Alle Prozesse killen und Cache leeren. (Normal)
+echo 4 - Alle Prozesse killen und Cache leeren. (Intensiv)
 echo.
 set /p u=Auswahl: 
 
@@ -38,13 +42,15 @@ set /p u=Auswahl:
 IF %u% EQU 1 GOTO :Prozesse
 IF %u% EQU 2 GOTO :Prozesse
 IF %u% EQU 3 GOTO :Prozesse
+IF %u% EQU 4 GOTO :Prozesse
 
 GOTO :Ende
 
 :Prozesse
 
 echo.
-echo Prozesse killen
+echo.
+echo TC Prozesse killen
 echo.
 
 :: Eine Reihe von Prozessen killen
@@ -53,6 +59,21 @@ taskkill /IM java.exe /T /F >nul 2>&1
 
 echo javaw.exe
 taskkill /IM javaw.exe /T /F >nul 2>&1
+
+echo teamcenter.exe
+taskkill /IM Teamcenter.exe /F >nul 2>&1
+
+echo.
+echo.
+echo.
+
+:: Rest überspringen wenn nur 1 ausgewählt
+IF %u% EQU 1 GOTO :Ende
+
+echo Alle Prozesse killen
+echo.
+
+:: Eine Reihe von Prozessen killen
 
 echo PLM_StartCenter.exe
 taskkill /IM PLM_StartCenter.exe /T /F >nul 2>&1
@@ -63,9 +84,6 @@ taskkill /IM ugraf.exe /F >nul 2>&1
 echo ugs_router.exe
 taskkill /IM ugs_router.exe /F >nul 2>&1
 
-echo teamcenter.exe
-taskkill /IM Teamcenter.exe /F >nul 2>&1
-
 echo visview.exe
 taskkill /IM visview.exe /F >nul 2>&1
 
@@ -74,26 +92,34 @@ taskkill /IM visview_NG.exe /F >nul 2>&1
 
 echo.
 echo.
+echo.
 
-:: Rest überspringen wenn nur 1 ausgewählt
-IF %u% EQU 1 GOTO :Ende
+:: Rest überspringen wenn nur 2 ausgewählt
+IF %u% EQU 2 GOTO :Ende
 
 echo Warten um Prozesse sicher zu beenden...
-timeout /T 5 /NOBREAK
+timeout /T 2 /NOBREAK
+
+echo.
+echo.
 echo.
 echo Cache leeren (Normal)
 echo.
 
 :: Löschen vom TC Cache
+
 echo Ordner: %appdata%\Siemens\FCCCache
 rd /s /q %appdata%\Siemens\FCCCache
+::echo Ordner: %USERPROFILE%\FCCCache
+::rd /s /q %USERPROFILE%\FCCCache
 
 echo.
 echo ... erledigt.
 
-:: Rest überspringen wenn nur 2 ausgewählt
-IF %u% EQU 2 GOTO :Ende
+:: Rest überspringen wenn nur 3 ausgewählt
+IF %u% EQU 3 GOTO :Ende
 
+echo.
 echo.
 echo.
 echo Cache leeren (Intensiv)
